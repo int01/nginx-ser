@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <style type="text/css">
-	div #bg {
-		position: fixed;
+	#bg {
+		position: relative;
 		top: 0;
 		left: 0;
 		height: 100%;
@@ -61,36 +61,41 @@
 <body>
 	<div id="bg"></div>
 	<div id="main">
-		<a href="//www.minhw.com/p/djs">高考倒计时</a>
-		<a href="//www.minhw.com/p/mz">mz</a>
-		<a href="//www.minhw.com/p/yy">yy</a>
+		<a href="https://www.minhw.com/p/djs">高考倒计时</a>
+		<a href="https://www.minhw.com/p/mz">mz</a>
+		<a href="https://www.minhw.com/p/yy">yy</a>
 	</div>
 	<div class="dxp-layout-footer" style="padding: 0px;"><div class="globalFooter___1W2x2"><div class="copyright___3hvsv">Copyright &copy; 2020 MINHW.</div></div></div>
 	<script>
-		// 定义图片路径 {num} 为 可变的图片序号
-		var bgImgUrl = '//www.minhw.com/images/bg/{num}.jpg', bgNum, bgImgArr = [], bgDiv = document
+		// 定义图片路径 {num} 为 可变的图片序号   
+		// https://www.pexels.com/zh-cn/
+		var bgImgUrl = 'https://www.minhw.com/p/images/bg/img_{num}.jpg', bgNum, bgImgArr = [], bgDiv = document
 				.getElementById("bg");
 		// 组合数组 此处 0 开始 图开始序号 结束  18
-		for (var i = 0; i <= 18; i++) { // Math.round(Math.random()*5)
-			bgImgArr.push(bgImgUrl.replace('{num}', i));
-		}
-		setBGimg();
-		function setBGimg(d) {
-			if (!bgNum || bgNum >= bgImgArr.length)
-				bgNum = 0;
-			bgDiv.style.opacity = .001;
-			setTimeout(function() {
-				bgDiv.style.backgroundImage = 'url(' + bgImgArr[bgNum] + ')';
-				bgNum++;
-				bgDiv.style.opacity = 1;
-			}, 1000);
-			// 这里的1000 是 1s
-			if (typeof d == 'undefined')
-				setInterval(function() {
-					setBGimg(true);
-				}, 6000);
-			// 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
-		}
+		// for (var i = 0; i <= 18; i++) { // parseInt(Math.random()*20+0)
+		// 	bgImgArr.push(bgImgUrl.replace('{num}', i));
+		// }
+		bgIUrl = bgImgUrl.replace('{num}', parseInt(Math.random()*20+0));
+		console.log(parseInt(Math.random()*20+0))
+		bgDiv.style.backgroundImage = 'url(' + bgIUrl + ')';
+		// setBGimg();
+		// function setBGimg(d) {
+		// 	console.log(parseInt(Math.random()*20+0))
+		// 	if (!bgNum || bgNum >= bgImgArr.length)
+		// 		bgNum = 0;
+		// 	bgDiv.style.opacity = .001;
+		// 	setTimeout(function() {
+		// 		bgDiv.style.backgroundImage = 'url(' + bgImgArr[bgNum] + ')';
+		// 		bgNum++;
+		// 		bgDiv.style.opacity = 1; // 设置div透明度
+		// 	}, 1000);
+		// 	// 这里的1000 是 1s
+		// 	if (typeof d == 'undefined')
+		// 		setInterval(function() {
+		// 			setBGimg(true);
+		// 		}, 6000);
+		// 	// 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
+		// }
 	</script>
 </body>
 </html>
